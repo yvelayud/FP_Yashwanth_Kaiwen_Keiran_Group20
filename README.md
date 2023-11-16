@@ -82,9 +82,11 @@ Use the following checklist to ensure that you have completed all of the tasks.
 + __What does a good example of the Final Project look like?__
   - Check out the various projects listed at the end of the Data Computing eBook as well as the example report. Those as well as the activities, especially towards the later parts of the course can help give you a sense of the scope for this project.  
 + __Can I use Python (or another language)?__
-  - STAT 184 is an R programming course, and the project is intended to evaluate learning objectives of this course so you should mostly be using R and your entire analysis must be self-contained in a single R Notebook.  However, if you want to do something in the project that we have not learned about in class (using R) and prefer to use Python or some other language for that purpose it's fine to include some Python chunks in your R Notebook.
+  - STAT 184 is an R programming course, and the project is intended to evaluate learning objectives of this course so you should mostly be using R and your entire analysis must be self-contained in a single R Markdown file. However, if you want to do something in the project that we have not learned about in class (using R) and prefer to use Python or some other language for that purpose it's fine to include some Python chunks in your R Markdown.
 + __We're really stuck on what to do. Help?__
-  - What shared interests does your team have? Do you all like a particular sport? Do you like a particular type of music? Do you like to play video games?
-  - For groups who are really stuck, I have a variety of data sets that teams can use.
-    - Ever wondered if double stuf Oreos(R) actually have twice the amount of créme filling as regular Oreos(R)? Me too. Hence, I had a group of students investigate this research question and actually collect data. (I have ~7 such data sets available.)
-    - Does the type (thin, regular, double, mega, most) and flavor (regular, mint, lemon, dark chocolate) impact the amount of créme filling and/or the ratio of créme filling mass to wafer mass? (I have 1 data set available.)
+  - What shared interests does your team have?
+    - Do you all like a particular sport? Do you like a particular type of music? Do you like to play video games?
+  - More general but interesting topics available.
+    - Ever wondered if double stuf Oreos(R) actually have twice the amount of créme filling as regular Oreos(R)?
+    - Does the type (thin, regular, double, mega, most) and flavor (regular, mint, lemon, dark chocolate) impact the amount of créme filling and/or the ratio of créme filling mass to wafer mass?
+    - Be creative!
