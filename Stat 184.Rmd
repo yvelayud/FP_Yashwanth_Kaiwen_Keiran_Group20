@@ -1,0 +1,128 @@
+---
+pdf-engine: pdflatex
+title: "SUPPLY CHAIN ANALYSIS"
+author: "Yashwanth Velayudham, Kieran Murdocca and Kaiwen Fu"
+date: "Last Updated: `r format(Sys.Date(), '%Y-%m-%d')`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+geometry:
+  left: 0.5in
+  right: 0.5in
+  top: 0.5in
+  bottom: 0.5in
+urlcolor: pink
+header-includes: null
+---
+
+```{r include=FALSE}
+csv_file_path <- "/Users/yashwanthvelayudham/Downloads/supply_chain_data.csv"
+
+# Read the CSV file
+supply_chain_data <- read.csv(csv_file_path)
+```
+
+[**SECTION 1-Availabilty Vs Price**]{.underline}
+
+```{r Line Graph, echo=FALSE, warning=FALSE}
+library(ggplot2)
+
+ggplot(supply_chain_data, aes(x = Availability, y = Price)) +
+  geom_line(color = "blue", size = 1.0) +
+  geom_point(color = "red", size = 1.0) +  # Adding data points for better visibility
+  labs(x = "Availability", y = "Price") +
+  ggtitle("Supply Chain Analysis based on Availability and Price") +
+  theme_minimal(base_size = 14) +
+  theme(axis.text = element_text(size = 10),
+        axis.title = element_text(size = 10, face = "bold"),
+        plot.title = element_text(size = 10, face = "bold"))
+```
+
+The graph above is an analysis of the availability and price. As we can see the line graph shows that based on the availability the price goes up. But also at 50 units the price is drastically low because the availability may be very high therefore according to the law of demand when demand is high the price is also high. When we look at the line graph we are able to see that based on the data it follows the law of demand. \
+
+```{r include=FALSE}
+csv_file_path <- "/Users/yashwanthvelayudham/Downloads/supply_chain_data.csv"
+
+# Read the CSV file
+supply_chain_data <- read.csv(csv_file_path)
+```
+
+[**SECTION 2-Revenue Generated and Number of products sold**]{.underline}
+
+```{r Scatter Plot, warning=FALSE}
+library(ggplot2)
+
+ggplot(supply_chain_data, aes(x = Revenue.generated, y = Number.of.products.sold)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "Red") +  
+  labs(
+    x = "Revenue generated",
+    y = "Number of products sold",
+    title = "Number of units sold where revenue was generated"
+    
+  ) +
+  theme_minimal(base_size = 10)+
+theme(axis.text = element_text(size = 10),
+        axis.title = element_text(size = 10, face = "bold"),
+        plot.title = element_text(size = 10, face = "bold"))
+
+```
+
+```{r include=FALSE}
+csv_file_path <- "/Users/yashwanthvelayudham/Downloads/supply_chain_data.csv"
+
+# Read the CSV file
+supply_chain_data <- read.csv(csv_file_path)
+```
+
+This scatter plot provides a detailed view of the relationship between revenue generation and the number of products sold. Each point on the graph represents a unique data entry, where the x-axis shows the revenue generated and the y-axis indicates the number of products sold. The plot includes a linear regression line (in red), highlighting the general trend within the data.
+
+From the distribution of points and the slope of the regression line, we can observe a positive correlation between these two variables. This suggests that as revenue increases, the number of products sold also tends to increase, which is a typical pattern in healthy sales operations. The scatter and density of points also provide insights into the variability of sales performance across different revenue levels. Such a visualization is crucial for identifying patterns and outliers in sales data, enabling decision-makers to better understand how sales volume impacts revenue and to strategize accordingly for optimizing sales performance \
+
+[**SECTION 3- Based on how many orders are placed how fat the orders are shipped**]{.underline}
+
+```{r Bar graph}
+library(ggplot2)
+
+ggplot(supply_chain_data, aes(x = Order.quantities, y = Shipping.times)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  labs(
+    x = "Order Quantities",
+    y = "Shipping Times",
+    title = "Relationship between Order Quantities and Shipping Times"
+  ) +
+  scale_y_continuous(expand = c(0, 0), name = "Shipping Times") +
+  scale_x_continuous(expand = c(0, 0), name = "Order Quantities") +
+  theme_minimal(base_size = 14) +
+  theme(axis.text = element_text(size = 10),
+        axis.title = element_text(size = 10, face = "bold"),
+        plot.title = element_text(size = 10, face = "bold"))
+
+```
+
+This bar chart is titled "Relationship between Order Quantities and Shipping Times." The vertical bars represent shipping times for different order quantities. The x-axis shows the order quantities, and it seems to go up to at least 75. The y-axis shows the shipping times, ranging from 0 to 10. The chart shows variability in shipping times across different order quantities. There's no clear trend that suggests shipping times consistently increase or decrease with larger order quantities. Some small orders have long shipping times, and some large orders have short shipping times. This could mean that the time it takes to ship orders doesn't depend solely on how many items are ordered. Other factors, like the type of product, destination, or shipping method, might also affect how long it takes for an order to ship.\
+
+[**SECTION 4- Basic Table for availibilty and price for all the units**]{.underline}
+
+```{r Table}
+library(ggplot2)
+data <- data.frame(
+
+  Product = c("Haircare", "Skincare", "Cosmetics"),
+  Availability = c(1332, 1471, 2037),
+  Price = c(1491.38,1564.48 ,1890.37)
+)
+print(data)
+#Cleaned up the data and then put into a an organized bar graph which is organized based on product. 
+ggplot(data, aes(x = Product, y = Availability, fill = Product)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Product Availability",
+       x = "Product",
+       y = "Availability") +
+  scale_fill_manual(values = c("Haircare" = "blue", "Skincare" = "green", "Cosmetics" = "red")) +
+  theme_minimal()
+```
+
+The bar chart presents the availability of three product types: Cosmetics, Haircare, and Skincare. Cosmetics, shown in red, have the highest availability, surpassing 2000 units. Haircare is represented in blue and has an intermediate availability, around the 1500 mark. Skincare, depicted in green, has the lowest availability, yet still over 1000 units. This visual comparison indicates that the stock levels are highest for Cosmetics, suggesting they might be the most supplied or potentially the most popular items. Haircare and Skincare have lower availability, which might point to lesser demand or different stock management strategies. The chart effectively illustrates the disparities in stock levels among these product categories.
